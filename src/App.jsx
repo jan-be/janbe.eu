@@ -1,5 +1,16 @@
 import { Mail, MapPin, ExternalLink, Music, Cpu, Server, Bot, Cloud } from 'lucide-react'
 
+function Picture({ src, alt = '', className }) {
+  const base = src.replace(/\.[^.]+$/, '')
+  return (
+    <picture>
+      <source srcSet={`${base}.avif`} type="image/avif" />
+      <source srcSet={`${base}.webp`} type="image/webp" />
+      <img src={src} alt={alt} className={className} />
+    </picture>
+  )
+}
+
 function GitHubIcon({ size = 20 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
@@ -52,11 +63,11 @@ function Hero() {
   return (
     <section className="hero">
       <div className="hero-bg">
-        <img src="/lufthansa-a350-100-years-night-at-muc.avif" alt="" />
+        <Picture src="/lufthansa-a350-100-years-night-at-muc.jpg" alt="" />
       </div>
       <div className="hero-content">
         <div className="hero-portrait">
-          <img src="/jan-suit-face.avif" alt="Jan Beckschewe" />
+          <Picture src="/jan-suit-face.jpeg" alt="Jan Beckschewe" />
         </div>
         <h1>Jan Beckschewe</h1>
         <p className="hero-subtitle">
@@ -87,8 +98,8 @@ function Experience() {
       company: 'Lufthansa Technik AG (NICE Cabin Systems)',
       location: 'Hamburg, Germany',
       date: 'Nov 2025 - May 2026',
-      logo: '/lufthansa_technik_logo.avif',
-      image: '/jan-wide-shot-in-front-of-aircraft.avif',
+      logo: '/lufthansa_technik_logo.jpg',
+      image: '/jan-wide-shot-in-front-of-aircraft.jpg',
       bullets: [
         'Main Qt/QML developer of a first-of-its-kind passenger control device featuring a touchscreen with a donut-shaped carveout acting as a rotary dial for cabin lighting, temperature, and entertainment.',
         'Eliminated rebuild wait times by building a custom hot-reloading plugin for Qt, enabling instant UI iteration during VIP In-Flight Entertainment development.',
@@ -102,7 +113,7 @@ function Experience() {
       company: 'Mittwald CM Service GmbH & Co. KG',
       location: 'Espelkamp, Germany',
       date: 'June - Sept 2018',
-      logo: '/mittwald_logo.avif',
+      logo: '/mittwald_logo.jpg',
       bullets: [
         'Streamlined internal food ordering by building a system with PHP Slim, MySQL, and AngularJS.',
         'Reduced customer issue resolution time by adding context-sensitive action recommendations to the ticketing system with PHP Slim and Vue.js.',
@@ -119,12 +130,12 @@ function Experience() {
           <div className="card" key={i}>
             {job.image && (
               <div className="card-image">
-                <img src={job.image} alt={job.company} />
+                <Picture src={job.image} alt={job.company} />
               </div>
             )}
             <div className="card-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <img src={job.logo} alt={job.company} className="company-logo" />
+                <Picture src={job.logo} alt={job.company} className="company-logo" />
                 <div>
                   <div className="card-title">{job.title}</div>
                   <div className="card-subtitle">{job.company}</div>
@@ -178,7 +189,7 @@ function Education() {
           <div className="card" key={i}>
             <div className="card-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <img src="/tu-berlin-icon.avif" alt="TU Berlin" className="company-logo" />
+                <Picture src="/tu-berlin-icon.jpg" alt="TU Berlin" className="company-logo" />
                 <div>
                   <div className="card-title">{d.degree}</div>
                   <div className="card-subtitle">{d.school}</div>
@@ -209,7 +220,7 @@ function Projects() {
       name: 'Singpro',
       description: 'Online singing competition game',
       url: 'https://singpro.app/',
-      image: '/singpro-screenshot.avif',
+      image: '/singpro-screenshot.png',
       date: '2026',
       bullets: [
         'Built a karaoke web-app with real-time pitch accuracy scoring for 27,000+ songs and seamless online multiplayer.',
@@ -222,7 +233,7 @@ function Projects() {
       name: 'Skybed',
       description: 'Edge computing testbed for drone software',
       url: 'https://github.com/jan-be/skybed',
-      image: '/skybed-screenshot.avif',
+      image: '/skybed-screenshot.png',
       date: '2024',
       bullets: [
         'Developed a scalable testbed for autonomous drone development and monitoring as master\'s thesis.',
@@ -236,7 +247,7 @@ function Projects() {
       name: '5G-Neural-Network',
       description: 'AI-powered 5G bandwidth predictor',
       url: 'https://github.com/jan-be/5G-neural-network',
-      image: '/5g-neural-networks-loss-plot.avif',
+      image: '/5g-neural-networks-loss-plot.png',
       date: '2023',
       bullets: [
         'Designed a neural network-based link bandwidth predictor for 5G networks.',
@@ -249,7 +260,7 @@ function Projects() {
       name: 'OpenCV Mazesolver',
       description: 'Raspberry Pi robot with computer vision',
       url: 'https://github.com/jan-be/opencv-mazesolver',
-      image: '/mazesolver-vehicle.avif',
+      image: '/mazesolver-vehicle.jpg',
       date: '2019',
       bullets: [
         'Built a Raspberry Pi-based robot that autonomously navigates a maze using OpenCV computer vision.',
@@ -261,7 +272,7 @@ function Projects() {
       name: 'Homelab',
       description: 'Self-hosted personal server infrastructure',
       url: null,
-      image: '/home-assistant-dashboard.avif',
+      image: '/home-assistant-dashboard.png',
       date: '2020 - now',
       bullets: [
         'Run applications in containers and VMs with availability monitoring and secure remote access.',
@@ -273,7 +284,7 @@ function Projects() {
       name: 'AWS Bootcamp',
       description: 'Interactive web game teaching AWS services',
       url: 'https://slsgame.janbe.eu/',
-      image: '/aws-bootcamp-screenshot.avif',
+      image: '/aws-bootcamp-screenshot.png',
       date: '2019',
       bullets: [
         'Created an interactive web game teaching 17 AWS services across 10 levels.',
@@ -291,7 +302,7 @@ function Projects() {
           <div className="card" key={i}>
             {p.image && (
               <div className="card-image">
-                <img src={p.image} alt={p.name} />
+                <Picture src={p.image} alt={p.name} />
               </div>
             )}
             <div className="card-header">

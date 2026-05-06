@@ -1,18 +1,17 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import sharp from 'sharp'
-import { readdir, stat, unlink, writeFile } from 'fs/promises'
+import { readdir, stat, writeFile } from 'fs/promises'
 import { join, extname, basename } from 'path'
 
-function imageToAvif({ quality = 55, maxWidth = 1200, exclude = [] } = {}) {
+function imageOptimize({ avifQuality = 70, webpQuality = 75, maxWidth = 1200, exclude = [] } = {}) {
   return {
-    name: 'image-to-avif',
+    name: 'image-optimize',
     apply: 'build',
     async closeBundle() {
       const distDir = join(process.cwd(), 'dist')
       const files = await readdir(distDir)
       const imageExts = ['.jpg', '.jpeg', '.png', '.webp']
-      let totalSaved = 0
 
       for (const file of files) {
         const ext = extname(file).toLowerCase()
@@ -21,23 +20,18 @@ function imageToAvif({ quality = 55, maxWidth = 1200, exclude = [] } = {}) {
 
         const filePath = join(distDir, file)
         const origSize = (await stat(filePath)).size
-        const avifBuf = await sharp(filePath)
-          .resize(maxWidth, null, { withoutEnlargement: true })
-          .avif({ quality })
-          .toBuffer()
-        const avifPath = join(distDir, basename(file, ext) + '.avif')
+        const name = basename(file, ext)
+        const resized = sharp(filePath).resize(maxWidth, null, { withoutEnlargement: true })
 
-        await writeFile(avifPath, avifBuf)
-        await unlink(filePath)
+        // Generate AVIF
+        const avifBuf = await resized.clone().avif({ quality: avifQuality }).toBuffer()
+        await writeFile(join(distDir, name + '.avif'), avifBuf)
 
-        const saved = origSize - avifBuf.length
-        totalSaved += saved
-        const pct = ((saved / origSize) * 100).toFixed(0)
-        console.log(`  ${file} (${(origSize / 1024).toFixed(1)}kB) → ${basename(avifPath)} (${(avifBuf.length / 1024).toFixed(1)}kB) -${pct}%`)
-      }
+        // Generate WebP
+        const webpBuf = await resized.clone().webp({ quality: webpQuality }).toBuffer()
+        await writeFile(join(distDir, name + '.webp'), webpBuf)
 
-      if (totalSaved > 0) {
-        console.log(`\n  Total savings: ${(totalSaved / 1024).toFixed(1)}kB`)
+        console.log(`  ${file} (${(origSize / 1024).toFixed(1)}kB) → .avif (${(avifBuf.length / 1024).toFixed(1)}kB) / .webp (${(webpBuf.length / 1024).toFixed(1)}kB)`)
       }
     },
   }
@@ -46,6 +40,6 @@ function imageToAvif({ quality = 55, maxWidth = 1200, exclude = [] } = {}) {
 export default defineConfig({
   plugins: [
     react(),
-    imageToAvif({ quality: 55, exclude: ['favicon'] }),
+    imageOptimize({ avifQuality: 70, webpQuality: 75, exclude: ['favicon'] }),
   ],
 })
