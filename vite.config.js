@@ -5,10 +5,15 @@ import { readdir, stat, writeFile } from 'fs/promises'
 import { join, extname, basename } from 'path'
 
 function imageOptimize({ avifQuality = 70, webpQuality = 75, maxWidth = 1200, exclude = [] } = {}) {
+  let outDir = 'dist'
   return {
     name: 'image-optimize',
     apply: 'build',
+    configResolved(config) {
+      outDir = config.build.outDir
+    },
     async closeBundle() {
+      if (outDir !== 'dist') return
       const distDir = join(process.cwd(), 'dist')
       const files = await readdir(distDir)
       const imageExts = ['.jpg', '.jpeg', '.png', '.webp']

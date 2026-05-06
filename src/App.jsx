@@ -82,7 +82,7 @@ function Hero() {
           <a href="https://linkedin.com/in/jan-be" target="_blank" rel="noreferrer" className="btn btn-outline">
             <LinkedInIcon size={18} /> LinkedIn
           </a>
-          <a href="mailto:jan@janbe.eu" className="btn btn-outline">
+          <a href="#" data-email className="btn btn-outline">
             <Mail size={18} /> Email
           </a>
         </div>
@@ -369,7 +369,7 @@ function Skills() {
 
 function Contact() {
   const contacts = [
-    { icon: <Mail size={20} />, label: 'Email', value: 'jan@janbe.eu', href: 'mailto:jan@janbe.eu' },
+    { icon: <Mail size={20} />, label: 'Email', value: '\u200B', href: '#', dataEmail: true },
     { icon: <LinkedInIcon size={20} />, label: 'LinkedIn', value: 'linkedin.com/in/jan-be', href: 'https://linkedin.com/in/jan-be' },
     { icon: <GitHubIcon size={20} />, label: 'GitHub', value: 'github.com/jan-be', href: 'https://github.com/jan-be' },
     { icon: <MapPin size={20} />, label: 'Location', value: 'Hamburg, Germany', href: null },
@@ -387,6 +387,7 @@ function Contact() {
             target={c.href?.startsWith('http') ? '_blank' : undefined}
             rel={c.href?.startsWith('http') ? 'noreferrer' : undefined}
             style={{ color: 'inherit', textDecoration: 'none' }}
+            {...(c.dataEmail ? { 'data-email': '' } : {})}
           >
             <div className="contact-icon">{c.icon}</div>
             <div>
