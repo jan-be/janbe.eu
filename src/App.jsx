@@ -302,7 +302,13 @@ function Projects() {
           <div className="card" key={i}>
             {p.image && (
               <div className="card-image">
-                <Picture src={p.image} alt={p.name} />
+                {p.url ? (
+                  <a href={p.url} target="_blank" rel="noreferrer">
+                    <Picture src={p.image} alt={p.name} />
+                  </a>
+                ) : (
+                  <Picture src={p.image} alt={p.name} />
+                )}
               </div>
             )}
             <div className="card-header">

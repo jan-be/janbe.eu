@@ -331,6 +331,7 @@ section {
   font-size: 0.8rem;
   color: var(--color-text-muted);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .card-location {
@@ -491,5 +492,14 @@ section {
 
   section {
     padding: 3rem 1.5rem;
+  }
+
+  .card-header {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .card-date {
+    white-space: normal;
   }
 }
