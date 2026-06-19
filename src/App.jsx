@@ -102,7 +102,7 @@ function Experience() {
       image: '/jan-wide-shot-in-front-of-aircraft.jpg',
       bullets: [
         'Main Qt/QML developer of a first-of-its-kind passenger control device featuring a touchscreen with a donut-shaped carveout acting as a rotary dial for cabin lighting, temperature, and entertainment.',
-        'Eliminated rebuild wait times by building a custom hot-reloading plugin for Qt, enabling instant UI iteration during VIP In-Flight Entertainment development.',
+        'Engineered an LLM-driven conversational agent with a real-time human avatar interface, autonomously mapping unstructured voice commands to core cabin hardware and media APIs.',
         'Enabled next-generation internet access for passengers by integrating Starlink satellite connectivity into the Global 8000 IFE platform.',
         'Prototyped an AI-driven analytics pipeline spanning C++ telemetry on-aircraft, a FastAPI backend, and a React dashboard to align feature development with actual passenger needs.',
       ],
