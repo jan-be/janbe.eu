@@ -217,10 +217,10 @@ function Education() {
 function Projects() {
   const projects = [
     {
-      name: 'Singpro',
+      name: 'SingSpree',
       description: 'Online singing competition game',
-      url: 'https://singpro.app/',
-      image: '/singpro-screenshot.png',
+      url: 'https://singspree.com/',
+      image: '/singspree-screenshot.png',
       date: '2026',
       bullets: [
         'Built a karaoke web-app with real-time pitch accuracy scoring for 27,000+ songs and seamless online multiplayer.',
