@@ -223,8 +223,8 @@ function Projects() {
       image: '/singspree-screenshot.png',
       date: '2026',
       bullets: [
-        'Built a karaoke web-app with real-time pitch accuracy scoring for 27,000+ songs and seamless online multiplayer.',
-        'Added AI-based instrument-voice separation pipeline.',
+        'Built and launched a karaoke web-app with real-time pitch accuracy scoring for 30,000+ songs and seamless online multiplayer.',
+        'Added AI-based instrument-voice separation pipeline for adding new songs.',
         'Features include real-time pitch detection via ONNX/Web Audio API, WebSocket multiplayer, 21 language support, and Spotify-Wrapped-style share cards.',
       ],
       tags: ['React 19', 'TypeScript', 'Express.js', 'WebSocket', 'Web Audio API', 'Docker'],
