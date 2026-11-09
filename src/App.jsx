@@ -218,16 +218,16 @@ function Projects() {
   const projects = [
     {
       name: 'SingSpree',
-      description: 'Online singing competition game',
+      description: 'Karaoke party game in the browser',
       url: 'https://singspree.com/',
       image: '/singspree-screenshot.png',
       date: '2026',
       bullets: [
-        'Built and launched a karaoke web-app with real-time pitch accuracy scoring for 30,000+ songs and seamless online multiplayer.',
+        'Built and launched a web app that turns guests\' phones into microphones, with live pitch scoring for 30,000+ songs.',
         'Automated new song imports with an AI-based instrument-voice separation pipeline.',
         'Features include real-time pitch detection via ONNX/Web Audio API, WebSocket multiplayer, 21 language support, and Spotify-Wrapped-style share cards.',
       ],
-      tags: ['React 19', 'TypeScript', 'Express.js', 'WebSocket', 'Web Audio API', 'Docker'],
+      tags: ['React 19', 'TypeScript', 'Express.js', 'WebSocket', 'Web Audio API', 'Docker', 'Claude Code'],
     },
     {
       name: 'Skybed',
@@ -343,9 +343,9 @@ function Skills() {
   const categories = [
     { name: 'Languages', items: ['Python', 'JavaScript/TypeScript', 'QML', 'PHP', 'Java', 'C++'] },
     { name: 'Frameworks', items: ['PyTorch', 'Node.js', 'React.js', 'FastAPI', 'Qt', 'Express.js', 'Vue.js'] },
-    { name: 'Tools & Platforms', items: ['Docker', 'Linux', 'CI/CD', 'Git', 'REST APIs', 'Proxmox', 'Grafana', 'Traefik'] },
+    { name: 'Tools & Platforms', items: ['Docker', 'Linux', 'CI/CD', 'Git', 'REST APIs', 'Proxmox', 'Grafana', 'Traefik', 'Claude Code'] },
     { name: 'Cloud', items: ['AWS (EC2, S3, DynamoDB, Lambda)', 'GCP Compute Engine'] },
-    { name: 'Specializations', items: ['Full-Stack', 'Embedded UI', 'Edge Computing', 'AI/ML', 'Real-time Systems'] },
+    { name: 'Specializations', items: ['Full-Stack', 'Embedded UI', 'Edge Computing', 'AI/ML', 'Agentic Engineering', 'Real-time Systems'] },
   ]
 
   return (
